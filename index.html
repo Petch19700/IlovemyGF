@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ความทรงจำของเรา 💕</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Kanit', sans-serif;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: slideDown 1s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            background: linear-gradient(45deg, #667eea, #f5576c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .relationship-timer {
+            background: linear-gradient(45deg, #ff6b9d, #ffa726);
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            box-shadow: 0 15px 30px rgba(255, 107, 157, 0.3);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .upload-section {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .upload-btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Kanit', sans-serif;
+            margin: 10px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .upload-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+        }
+        
+        .clear-btn {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Kanit', sans-serif;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .clear-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(244, 67, 54, 0.3);
+        }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 3rem;
+        }
+        
+        .photo-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            animation: scaleIn 0.6s ease-out;
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .photo-container:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        
+        .photo-container img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .photo-container:hover img {
+            transform: scale(1.1);
+        }
+        
+        .photo-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .photo-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+                
+        .photo-description {
+            color: #888;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .reconciliation-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 3rem;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-top: 3rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .reconciliation-title {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .reconciliation-message {
+            font-size: 1.3rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .choice-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .choice-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            font-size: 1.3rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Kanit', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            min-width: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .choice-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .choice-btn:hover::before {
+            left: 100%;
+        }
+        
+        .choice-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+        
+        .yes-btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+        }
+        
+        .yes-btn:hover {
+            box-shadow: 0 15px 35px rgba(76, 175, 80, 0.4);
+        }
+        
+        .no-btn {
+            background: linear-gradient(45deg, #ff6b9d, #f5576c);
+        }
+        
+        .no-btn:hover {
+            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.4);
+        }
+        
+        .result-message {
+            display: none;
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 1.2rem;
+            animation: bounceIn 0.8s ease-out;
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .yes-result {
+            background: linear-gradient(45deg, #c8e6c9, #a5d6a7);
+            color: #2e7d32;
+            border: 2px solid #4caf50;
+        }
+        
+        .no-result {
+            background: linear-gradient(45deg, #ffcdd2, #f8bbd9);
+            color: #c62828;
+            border: 2px solid #f44336;
+        }
+        
+        .hearts-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: floatUp 4s ease-out forwards;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+        
+        .no-photos {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+            font-size: 1.2rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            .header h1 { font-size: 2rem; }
+            .header p { font-size: 1rem; }
+            .photo-gallery { grid-template-columns: 1fr; }
+            .choice-buttons { flex-direction: column; align-items: center; }
+            .choice-btn { min-width: 250px; }
+            .relationship-timer { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>เป็นแฟนกันแล้ว</h1>
+            <p>เราผ่านการปรับและให้อภัยกัน</p>
+            <p>รวมทุกข์รวมสุข อยู่ช้างๆกันเสมอ</p>
+            
+            <div class="relationship-timer" id="relationshipTimer">
+                รักกันมาแล้ว: กำลังคิดคณิต... ⏰
+            </div>
+        </div>
+        
+        <!-- Photo Gallery -->
+        <div class="photo-gallery" id="photoGallery">
+            <!-- รูปความทรงจำของเรา -->
+            <div class="photo-container">
+                <img src="3.jfif" alt="ช่วงเวลา 1" onclick="showLargeImage('1.jfif', 'ไปส่งเธอไปเรียน', 'รูปแรกที่เราถ่ายด้วยกัน')">
+                <div class="photo-info">
+                    <div class="photo-title">ส่งเธอไปเรียน</div>
+                    <div class="photo-description">ไปส่งเธอไปเรียนครั้งแรก</div>
+                </div>
+            </div>
+
+            <div class="photo-container">
+                <img src="DSC07600.jpg" alt="ช่วงเวลา 2" onclick="showLargeImage('2.jfif', 'รูปด้วยกัน', 'วันที่หัวใจเต้นแรงมาก')">
+                <div class="photo-info">
+                    <div class="photo-title">รูปคู่ดารา</div>
+                    <div class="photo-description">รูปคู่คนที่สวยที่สุด</div>
+                </div>
+            </div>
+
+            <div class="photo-container">
+                <img src="9 (3).jfif" alt="ช่วงเวลา 3" onclick="showLargeImage('3.jfif', 'ที่รักป้อนข้าว', 'ทุกวันกับเธอคือความสุข')">
+                <div class="photo-info">
+                    <div class="photo-title">ที่รักป้อนข้าว</div>
+                    <div class="photo-description">อยากให้เธอป้อนข้าวให้อีก</div>
+                </div>
+            </div>
+
+            <div class="photo-container">
+                <img src="9 (4).jfif" alt="ช่วงเวลา 4" onclick="showLargeImage('4.jfif', 'เที่ยวด้วยกันครั้งแรก', 'เวลาดีๆ ที่อยากให้หยุดอยู่ตรงนี้')">
+                <div class="photo-info">
+                    <div class="photo-title">เที่ยวด้วยกันครั้งแรก</div>
+                    <div class="photo-description">อยากไปเที่ยวกับเธอเยอะๆเลย</div>
+                </div>
+            </div>
+
+            <div class="photo-container">
+                <img src="4.jfif" alt="ช่วงเวลา 5" onclick="showLargeImage('5.jfif', 'รอยยิ้มที่รัก', 'รอยยิ้มเธอคือแสงสว่างในชีวิต')">
+                <div class="photo-info">
+                    <div class="photo-title">รอยยิ้มที่รัก</div>
+                    <div class="photo-description">อยากให้เธอยิ่้มมากๆนะ</div>
+                </div>
+            </div>
+
+            <div class="photo-container">
+                <img src="DSC07631.jpg" alt="ช่วงเวลา 6" onclick="showLargeImage('6.jfif', 'วันถ่ายรูปด้วยกัน', 'วันที่จะจำไปตลodkาดชีวิต')">
+                <div class="photo-info">
+                    <div class="photo-title">วันพิเศษ</div>
+                    <div class="photo-description">อยากกลับมาถ่ายด้วยกันอีก</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Reconciliation Section -->
+        <div class="reconciliation-section">
+            <h2 class="reconciliation-title">ขอโทษจริงๆ นะ</h2>
+            <div class="reconciliation-message">
+                <p>มันอาจจะไม่ได้มากมาย แต่เค้าพยายามง้อในแบบที่เค้่าทำได้</p>
+                <p>เค้าอาจจะพูดไม่เก่ง สื่อสารไม่ดี แต่เค้ามั่นใจว่าเค้ารักเธอไม่แพ้พ่อแม่เธอ</p>
+                <p>เค้าอยากให้เธอเป็นผู้หญิงที่มีโชคดีและมีความสุขมากที่สุดในโลก</p>
+                <p>ไม่ว่าเธอจะเจอปัญหาอะไร เค้าก็พร้อมจะอยู่ข้างๆเธอเสมอ</p>
+                <p>ปัญหาเรื่องเพื่อน เค้าเข้าใจ เค้างี่เง่าเอง เค้าจะปรับปรุง</p>
+                <p>ปัญหาเรื่องปล่อยให้เธอเสียใจคนเดียว เค้าใช้อารมณ์มากเกินไป ขอโทษจริงๆ</p>
+                <p>สุดท้ายนี้ อยากจะบอกว่าเค้ารักเธอมากๆ ขอบคุณที่ทำให้รู้ว่าการได้รักใครซักคนสุดหัวใจเป็นอย่างไร</p>
+                <p>อยากให้เรากลับมาดีกันนะ</p>
+                <p><strong>เรากลับมาดีกันได้ไหม?</strong></p>
+            </div>
+            
+            <div class="choice-buttons">
+                <button class="choice-btn yes-btn" onclick="chooseYes()">
+                    คืนดีกัน 
+                </button>
+                <button class="choice-btn no-btn" onclick="chooseNo()">
+                    ยังโกรธอยู่
+                </button>
+            </div>
+            
+            <div id="yesResult" class="result-message yes-result">
+                <h3>ขอบคุณนะที่รัก!</h3>
+                <p>สัญญาจะไม่ทำให้เสียใจอีกแล้ว</p>
+                <p>เดียวเราไปหาอะไรอร่อยๆกินกัน</p>
+                <p><strong>จะดูแลเธอให้ดีกว่านี้ ไม่ปล่อยเธออีกเด็ดขาด</strong></p>
+            </div>
+            
+            <div id="noResult" class="result-message no-result">
+                <h3>เข้าใจนะ</h3>
+                <p>ขอเวลาง้อเธออีกนิด</p>
+                <p>เค้าไม่ยอมแพ่หรอกนะ</p>
+                <p><strong>รอวันที่เธอยกโทษให้นะ</strong></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hearts Animation Container -->
+    <div class="hearts-animation" id="heartsContainer"></div>
+
+    <script>
+        // คำนวณเวลาที่คบกัน
+        function updateRelationshipTimer() {
+            const startDate = new Date('2024-02-21');
+            const now = new Date();
+            const diffTime = Math.abs(now - startDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            const years = Math.floor(diffDays / 365);
+            const months = Math.floor((diffDays % 365) / 30);
+            const days = diffDays % 30;
+            
+            let timeText = "รักกันมาแล้ว: ";
+            
+            if (years > 0) {
+                timeText += years + " ปี ";
+            }
+            if (months > 0) {
+                timeText += months + " เดือน ";
+            }
+            timeText += days + " วัน 💕";
+            
+            // เพิ่มข้อมูลเสริม
+            timeText += ` (รวม ${diffDays.toLocaleString()} วัน)`;
+            
+            document.getElementById('relationshipTimer').innerHTML = timeText;
+        }
+        
+        // อัพเดทเวลาทุกวินาที
+        updateRelationshipTimer();
+        setInterval(updateRelationshipTimer, 1000);
+        
+        // ระบบอัพโหลดรูป
+        let photoCount = 0;
+        
+        document.getElementById('photoInput').addEventListener('change', function(e) {
+            const files = e.target.files;
+            const gallery = document.getElementById('photoGallery');
+            
+            // ลบข้อความ "ยังไม่มีรูป" เมื่อมีการอัพโหลด
+            const noPhotos = gallery.querySelector('.no-photos');
+            if (noPhotos && files.length > 0) {
+                noPhotos.remove();
+            }
+            
+            Array.from(files).forEach((file, index) => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        photoCount++;
+                        
+                        const photoCard = document.createElement('div');
+                        photoCard.className = 'photo-card';
+                        photoCard.style.animationDelay = (index * 0.2) + 's';
+                        
+                        const currentDate = new Date().toLocaleDateString('th-TH', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        });
+                        
+                        const sweetMessages = [
+                            "ช่วงเวลาที่แสนหวาน 💕",
+                            "ความทรงจำที่สวยงาม ✨",
+                            "รอยยิ้มที่อบอุ่น 😊",
+                            "วันที่เต็มไปด้วยความสุข 🌟",
+                            "ช่วงเวลาแสนพิเศษ 💖",
+                            "ความรักที่งดงาม 🌹",
+                            "วันที่ไม่มีวันลืม 💝"
+                        ];
+                        
+                        const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];
+                        
+                        photoCard.innerHTML = `
+                            <img src="${e.target.result}" alt="ความทรงจำ ${photoCount}">
+                            <div class="photo-info">
+                                <div class="photo-title">ความทรงจำ ${photoCount}</div>
+                                <div class="photo-date">📅 ${currentDate}</div>
+                                <div class="photo-description">${randomMessage}</div>
+                            </div>
+                        `;
+                        
+                        // เพิ่ม click event เพื่อดูรูปขนาดใหญ่
+                        photoCard.addEventListener('click', function() {
+                            showLargeImage(e.target.result, `ความทรงจำ ${photoCount}`, randomMessage);
+                        });
+                        
+                        gallery.appendChild(photoCard);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // รีเซ็ต input
+            this.value = '';
+        });
+        
+        // ฟังก์ชันแสดงรูปขนาดใหญ่
+        function showLargeImage(src, title, description) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                cursor: pointer;
+            `;
+            
+            const content = document.createElement('div');
+            content.style.cssText = `
+                max-width: 90%;
+                max-height: 90%;
+                text-align: center;
+            `;
+            
+            content.innerHTML = `
+                <img src="${src}" style="max-width: 100%; max-height: 80vh; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+                <div style="color: white; font-size: 1.5rem; margin-top: 20px; font-weight: 600;">${title}</div>
+                <div style="color: #ccc; font-size: 1.1rem; margin-top: 10px;">${description}</div>
+                <div style="color: #aaa; font-size: 0.9rem; margin-top: 10px;">คลิกที่ไหนก็ได้เพื่อปิด</div>
+            `;
+            
+            modal.appendChild(content);
+            modal.addEventListener('click', () => modal.remove());
+            document.body.appendChild(modal);
+        }
+        
+        // ลบรูปทั้งหมด
+        function clearAllPhotos() {
+            const gallery = document.getElementById('photoGallery');
+            gallery.innerHTML = `
+                <div class="no-photos">
+                    <h3>🤔 ยังไม่มีรูปเลย</h3>
+                    <p>กดปุ่มด้านบนเพื่อเพิ่มรูปความทรงจำของเรากันนะ</p>
+                </div>
+            `;
+            photoCount = 0;
+        }
+        
+        // สร้างหัวใจลอย
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = ['💖', '💕', '💗', '💓', '💝'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+            
+            document.getElementById('heartsContainer').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+        
+        // ตอบตกลงคืนดี
+        function chooseYes() {
+            document.getElementById('yesResult').style.display = 'block';
+            document.getElementById('noResult').style.display = 'none';
+            
+            // สร้างหัวใจลอยเยอะๆ
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => createFloatingHeart(), i * 100);
+            }
+            
+            // เปลี่ยนพื้นหลัง
+            document.body.style.background = 'linear-gradient(-45deg, #ffeaa7, #fab1a0, #fd79a8, #fdcb6e)';
+            
+            // เล่นเสียงแจ้งเตือน (จำลอง)
+            if ('vibrate' in navigator) {
+                navigator.vibrate([200, 100, 200]);
+            }
+        }
+        
+        // ตอบยังโกรธ
+        function chooseNo() {
+            document.getElementById('noResult').style.display = 'block';
+            document.getElementById('yesResult').style.display = 'none';
+            
+            // เปลี่ยนพื้นหลังเป็นโทนเศร้า
+            document.body.style.background = 'linear-gradient(-45deg, #a8a8a8, #d3d3d3, #b0b0b0, #c0c0c0)';
+            
+            // สร้างหัวใจแตกใจเดียว
+            setTimeout(() => {
+                const brokenHeart = document.createElement('div');
+                brokenHeart.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    font-size: 5rem;
+                    z-index: 9999;
+                    animation: fadeOut 3s ease-out forwards;
+                `;
+                brokenHeart.innerHTML = '💔';
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes fadeOut {
+                        0% { opacity: 1; transform: translate(-50%, -50%) scale(0); }
+                        50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+                        100% { opacity: 0; transform: translate(-50%, -50%) scale(1) translateY(-100px); }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                document.body.appendChild(brokenHeart);
+                
+                setTimeout(() => {
+                    brokenHeart.remove();
+                    style.remove();
+                }, 3000);
+            }, 500);
+        }
+    </script>
+</body>
+</html>
